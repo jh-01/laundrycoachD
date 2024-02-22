@@ -246,7 +246,7 @@ export default function MyCloset({navigation}){
                     style={styles.cloth}
                     onPress={() => selectItem(result)}
                 >
-                    <Image source={result.imagePath || require('../../assets/images/gallery.png')} />
+                    {result.imagePath ? <Image source={{ uri: result.imagePath }}/> : <Image source={require('../../assets/images/gallery.png')} />}
                     <View>
                         <Text style={styles.name}>{result.title}</Text>
                         <View style={styles.symbols}>
@@ -271,7 +271,7 @@ export default function MyCloset({navigation}){
                                     
                                 return (
                                     <View key={index} style={styles.symbol}>
-                                    <Image key={match.id} source={{uri:match.symbol}} style={{ width: 25, height: 25 }}/>
+                                    {match.symbol ? <Image source={{uri:match.symbol}}/> : <Image source={require('../../assets/images/gallery.png')} style={{ width: 25, height: 25 }}/>}
                                     </View>
                                 );
                                 } else {
